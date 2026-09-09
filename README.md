@@ -1,17 +1,20 @@
 # Ruutvõrrandi näidisprojekt
 
-Väike Python-programm Antigravity tunniharjutuseks. Lähtekood sisaldab teadlikult käsitlemata piirjuhtu `a = 0`.
+Väike Python-programm ruutvõrrandi $ax^2 + bx + c = 0$ reaalarvuliste lahendite leidmiseks.
 
-Ülesanne on täiendada funktsiooni `lahenda_ruutvorrand` nii, et:
+## Funktsioon `lahenda_ruutvorrand(a, b, c)`
 
-- `lahenda_ruutvorrand(0, 2, -8)` tagastab `(4.0,)`;
-- `lahenda_ruutvorrand(0, 0, 5)` tõstab `ValueError`-i;
-- olemasolev käitumine ja testid jäävad tööle;
-- lahendus ei lisa väliseid sõltuvusi.
+Funktsioon arvutab ja tagastab võrrandi reaalarvulised lahendid ennikuna (`tuple[float, ...]`).
+
+### Käitumine:
+- **Kaks lahendit** (diskriminant > 0): tagastab kahe lahendiga enniku `(x1, x2)`.
+- **Üks lahend** (diskriminant = 0): tagastab ühe lahendiga enniku `(x,)`.
+- **Reaalarvulisi lahendeid ei ole** (diskriminant < 0): tagastab tühja enniku `()`.
+- **Kordaja $a = 0$**: viskab `ValueError` veateatega `"Kordaja 'a' ei tohi olla 0."`, kuna tegemist pole ruutvõrrandiga ja tekiks nulliga jagamine.
 
 ## Käivitamine
 
-Liigu sellesse kausta ja käivita:
+Liigu sellesse kausta ja käivita interaktiivne programm:
 
 ```powershell
 python ruutvorrand.py
@@ -19,8 +22,10 @@ python ruutvorrand.py
 
 ## Testimine
 
+Automaattestide käivitamiseks:
+
 ```powershell
 python -m unittest -v
 ```
 
-Enne harjutust peavad neli olemasolevat testi läbima. Harjutuse käigus lisatakse kaks piirjuhu testi.
+Projekt sisaldab viit automaattesti failis `test_ruutvorrand.py`, mis katavad erinevaid diskriminandi väärtusi, murdarvulisi kordajaid ning piirjuhtu $a = 0$.
