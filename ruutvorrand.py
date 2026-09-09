@@ -5,6 +5,9 @@ import math
 
 def lahenda_ruutvorrand(a: float, b: float, c: float) -> tuple[float, ...]:
     """Tagasta võrrandi ax² + bx + c = 0 reaalarvulised lahendid."""
+    if a == 0:
+        raise ValueError("Kordaja 'a' ei tohi olla 0.")
+
     diskriminant = b**2 - 4 * a * c
 
     if diskriminant < 0:

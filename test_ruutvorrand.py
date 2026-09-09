@@ -16,6 +16,10 @@ class RuutvorrandiTest(unittest.TestCase):
     def test_murdarvulised_kordajad(self):
         self.assertEqual(lahenda_ruutvorrand(0.5, -1.5, 1), (2.0, 1.0))
 
+    def test_a_on_null_viskab_vea(self):
+        with self.assertRaises(ValueError):
+            lahenda_ruutvorrand(0, 2, 1)
+
 
 if __name__ == "__main__":
     unittest.main()
